@@ -1,5 +1,5 @@
 "use client"
-import { usecolorPreferences } from '@/provider/color-preferences';
+import { UsecolorPreferences } from '@/provider/color-preferences';
 import { useTheme } from 'next-themes'
 import React from 'react'
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from './ui/dialog';
@@ -13,7 +13,7 @@ import { BsLaptop } from 'react-icons/bs';
 
 const PreferencesDialog = () => {
     const { setTheme, theme } = useTheme();
-    const { selectColor } = usecolorPreferences();
+    const { selectColor } = UsecolorPreferences();
 
 
     return (

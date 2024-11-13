@@ -1,4 +1,3 @@
-import { createClient } from "@/supabase/supabaseServer";
 import supabaseServerClientPages from "@/supabase/supabaseServerPages";
 import { User } from "@/types/app";
 import { NextApiRequest, NextApiResponse } from "next";

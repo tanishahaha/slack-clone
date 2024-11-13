@@ -20,9 +20,9 @@ const page = async ({ params: { id, channelId } }: { params: { id: string; chann
     if (!userData) {
         return redirect('/auth');
     }
-    const [userWorkspaceData, userWorkspaceError] = await getUserWorkspaceData(userData.workspaces!);
+    const [userWorkspaceData,] = await getUserWorkspaceData(userData.workspaces!);
 
-    const [currentWorkspaceData, currentWorkspaceError] = await getCurrentWorkspaceData(id);
+    const [currentWorkspaceData,] = await getCurrentWorkspaceData(id);
 
     const userWorkspaceChannels = await getWorkspaceChannels(
         currentWorkspaceData.id,

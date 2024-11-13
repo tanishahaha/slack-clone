@@ -1,7 +1,5 @@
 import { createClient } from '@/supabase/supabaseServer'
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { type EmailOtpType } from '@supabase/supabase-js'
-import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 
 export async function GET(request: Request) {
@@ -11,7 +9,6 @@ export async function GET(request: Request) {
   const next = searchParams.get('next') ?? '/'
 
   if (token_hash && type) {
-    const cookieStore = cookies()
     const supabase = createClient();
 
     const { error } = await supabase.auth.verifyOtp({

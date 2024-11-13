@@ -34,22 +34,22 @@ const TextEditor: FC<TextEditorProps> = ({ apiUrl, type, channel, workspaceData 
         },
     });
 
-    // const handleSend = async () => {
-    //     // console.log(content)
-    //     if (content.length < 2) return;
+    const handleSend = async () => {
+        // console.log(content)
+        if (content.length < 2) return;
 
-    //     try {
-    //         // await axios.post(`${apiUrl}?channelId=${channel?.id}&id=${workspaceData?.id}`, {
-    //         //     content,
-    //         // });
+        try {
+            await axios.post(`${apiUrl}?channelId=${channel?.id}&id=${workspaceData?.id}`, {
+                content,
+            });
 
-    //         setContent('');
-    //         editor?.commands.setContent('');
+            setContent('');
+            editor?.commands.setContent('');
 
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
 
 
@@ -70,9 +70,9 @@ const TextEditor: FC<TextEditorProps> = ({ apiUrl, type, channel, workspaceData 
                 <FiPlus size={28} className='dark:text-black' />
             </div>
 
-            {/* <Button size={"sm"} className='absolute bottom-1 right-1' onClick={() => handleSend} disabled={content.length < 2}>
+            <Button size={"sm"} className='absolute bottom-1 right-1' onClick={() => handleSend} disabled={content.length < 2}>
                 <Send />
-            </Button> */}
+            </Button>
 
         </div>
     )

@@ -4,14 +4,14 @@ import React, { FC, useState } from 'react'
 import Typography from './ui/Typography';
 import { Button } from './ui/button';
 import CreateChannelDialog from './create-channel-dialog';
-import { usecolorPreferences } from '@/provider/color-preferences';
+import { UsecolorPreferences } from '@/provider/color-preferences';
 import { cn } from '@/lib/utils';
 
 const NoDataScreen: FC<{ workspaceName: string; userId: string; workspaceId: string }> = ({ userId, workspaceId, workspaceName }) => {
 
     const [dialogOpen, setDialogOpen] = useState(false);
 
-    const { color } = usecolorPreferences();
+    const { color } = UsecolorPreferences();
     let textCol = 'text-primary-light';
 
     if (color === 'green') {

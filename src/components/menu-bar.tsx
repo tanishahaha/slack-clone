@@ -1,13 +1,16 @@
 "use client"
 import React, { FC } from 'react'
 import { Editor } from '@tiptap/react'
-import { Button } from './ui/button'
 import { Bold, Code, Italic, List, ListOrdered, SquareCode, Strikethrough } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import Typography from './ui/Typography'
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+
+interface EmojiIn {
+    native: string;
+    // Add other properties as needed, such as emoji code, category, etc.
+}
 
 const MenuBar: FC<{ editor: Editor }> = ({ editor }) => {
     return (
@@ -54,7 +57,7 @@ const MenuBar: FC<{ editor: Editor }> = ({ editor }) => {
                     </button>
                 </PopoverTrigger>
                 <PopoverContent className='w-fit p-0'>
-                    <Picker data={data} onEmojiSelect={(emoji: any) => editor.chain().focus().insertContent(emoji.native).run()} />
+                    <Picker data={data} onEmojiSelect={(emoji: EmojiIn) => editor.chain().focus().insertContent(emoji.native).run()} />
                 </PopoverContent>
             </Popover>
 

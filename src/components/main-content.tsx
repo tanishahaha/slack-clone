@@ -1,13 +1,13 @@
 "use client"
 import { cn } from '@/lib/utils';
-import { usecolorPreferences } from '@/provider/color-preferences';
+import { UsecolorPreferences } from '@/provider/color-preferences';
 import { useTheme } from 'next-themes'
 import React, { FC, ReactNode } from 'react'
 
 const MainContent: FC<{ children: ReactNode }> = ({ children }) => {
 
     const { theme } = useTheme();
-    const { color } = usecolorPreferences();
+    const { color } = UsecolorPreferences();
 
     let backgroundColor = 'bg-primary-dark';
     if (color === 'green') {

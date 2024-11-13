@@ -12,7 +12,6 @@ import CreateWorkspace from './create-workspace';
 import { useRouter } from 'next/navigation';
 import ProgressBar from './progress-bar';
 import { cn } from '@/lib/utils';
-import { usecolorPreferences } from '@/provider/color-preferences';
 
 type SidebarNavProps = {
     userWorkspaceData: Workspace[];
@@ -21,13 +20,7 @@ type SidebarNavProps = {
 
 const SidebarNav: FC<SidebarNavProps> = ({ currentWorkspaceData, userWorkspaceData }) => {
 
-    let backgroundColor = 'bg-primary-dark';
-    const { color } = usecolorPreferences();
-    if (color === 'green') {
-        backgroundColor = 'bg-[#245501]';
-    } else if (color === 'blue') {
-        backgroundColor = 'bg-[#023047]';
-    }
+
 
     const [switchingWorkspace, setSwitchingWorkspace] = useState(false);
     const router = useRouter();
@@ -60,32 +53,32 @@ const SidebarNav: FC<SidebarNavProps> = ({ currentWorkspaceData, userWorkspaceDa
                                     <CardContent className='flex p-0 flex-col'>
                                         {
                                             switchingWorkspace ?
-                                            <div className='m-2'>
+                                                <div className='m-2'>
 
-                                                <ProgressBar /> 
-                                            </div> :
+                                                    <ProgressBar />
+                                                </div> :
                                                 userWorkspaceData.map((workspace) => {
-                                                    const isActive=currentWorkspaceData.id===workspace.id;
-                                                    return(
-                                                        <div key={workspace.id} className={cn(isActive && `bg-blue-700 text-white`,' px-2 py-1 flex gap-2 cursor-pointer')} onClick={() => switchWorkspace(workspace.id)}>
+                                                    const isActive = currentWorkspaceData.id === workspace.id;
+                                                    return (
+                                                        <div key={workspace.id} className={cn(isActive && `bg-blue-700 text-white`, ' px-2 py-1 flex gap-2 cursor-pointer')} onClick={() => switchWorkspace(workspace.id)}>
                                                             <Avatar>
                                                                 <AvatarImage src={workspace.image_url || ''} alt={workspace.name} className='object-cover w-full h-full' />
                                                                 <AvatarFallback className='bg-slate-700 text-white'>
                                                                     <Typography text={workspace.name.slice(0, 2)} variant='p' />
                                                                 </AvatarFallback>
                                                             </Avatar>
-    
+
                                                             <div>
                                                                 <Typography variant='p' text={workspace.name} className='text-small' />
                                                                 <Typography variant='p' text={workspace.invite_code || ''} className='text-xs lg:text-xs' />
                                                             </div>
                                                         </div>
-    
-    
+
+
                                                     )
                                                 }
-                                                    
-                                            )
+
+                                                )
                                         }
 
                                         <Separator />

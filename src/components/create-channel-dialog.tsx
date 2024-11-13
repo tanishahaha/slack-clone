@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 import { createChannel } from '@/actions/create-channel';
 import { useRouter } from 'next/navigation';
 
-const CreateChannelDialog: FC<{ dialogOpen: boolean; setDialogOpen: Dispatch<SetStateAction<boolean>>; workspaceId: any; userId: string; }> = ({ dialogOpen, setDialogOpen, workspaceId, userId }) => {
+const CreateChannelDialog: FC<{ dialogOpen: boolean; setDialogOpen: Dispatch<SetStateAction<boolean>>; workspaceId: string; userId: string; }> = ({ dialogOpen, setDialogOpen, workspaceId, userId }) => {
 
     const formSchema = z.object({
         name: z.string().min(2, { message: "Channel name must be atleast 2 characters long." })
@@ -36,8 +36,8 @@ const CreateChannelDialog: FC<{ dialogOpen: boolean; setDialogOpen: Dispatch<Set
             form.reset();
             toast.success("Channel created successfully");
 
-        } catch (err) {
-
+        } catch (err: unknown) {
+            console.log(err)
             setIsSubmitting(false);
             toast.error("Something went wrong. Please try again later.")
         }

@@ -1,9 +1,9 @@
 "use client"
 import { cn } from '@/lib/utils';
-import { usecolorPreferences } from '@/provider/color-preferences'
+import { UsecolorPreferences } from '@/provider/color-preferences'
 import React, { FC, useState } from 'react'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
-import { FaArrowDown, FaArrowUp, FaCaretDown, FaCaretRight, FaPlus } from 'react-icons/fa';
+import { FaCaretDown, FaCaretRight, FaPlus } from 'react-icons/fa';
 import Typography from './ui/Typography';
 import CreateChannelDialog from './create-channel-dialog';
 import { Channels, User, Workspace } from '@/types/app';
@@ -11,14 +11,8 @@ import { useRouter } from 'next/navigation';
 
 const InfoSection: FC<{ userData: User; currentWorkspaceData: Workspace; workspaceChannels: Channels[]; currentChannelId: string }> = ({ userData, currentWorkspaceData, workspaceChannels, currentChannelId }) => {
 
-  const { color } = usecolorPreferences();
-  let backgroundColor = 'bg-primary-light';
+  const { color } = UsecolorPreferences();
 
-  if (color === 'green') {
-    backgroundColor = "bg-[#245501]";
-  } else if (color === 'blue') {
-    backgroundColor = 'bg-[#023047]'
-  }
 
   let hoverCol = 'hover:text-primary-light';
 
