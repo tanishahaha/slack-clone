@@ -88,7 +88,7 @@ const AuthCheck = () => {
 
                 <Typography text='We suggest using the email address that you use at work' variant='p' className='opacity-90 mb-7' />
 
-                <div className="flex flex-col space-y-4">
+                <div className="flex flex-col space-y-4 text-white">
                     <Button disabled={isAuthenticated} variant='outline' className='py-6 border-2 flex space-x-3' onClick={() => socialAuth('google')}>
                         <FcGoogle size={30} />
                         <Typography text='Sign in with Google' variant='p' className='text-xl' />
