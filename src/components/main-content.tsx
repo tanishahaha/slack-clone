@@ -19,7 +19,7 @@ const MainContent: FC<{ children: ReactNode }> = ({ children }) => {
 
     return (
         <div className={cn('md:px-2 md:pb-2 md:h-screen md:pt-14 text-black', backgroundColor)}>
-            <main className={cn('md:ml-[280px] lg:ml-[420px] md:h-full overflow-y-hidden', theme === 'dark' ? 'bg-[#232529]' : 'bg-white')}>
+            <main className={cn('md:ml-[280px] lg:ml-[420px] md:h-full overflow-y-hidden', theme === 'dark' ? 'bg-[#232529] text-white' : 'bg-white text-black')}>
                 {children}
             </main>
         </div>
