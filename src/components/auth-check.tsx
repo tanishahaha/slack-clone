@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input';
 import Typography from '@/components/ui/Typography'
+import { cn } from '@/lib/utils';
 import { createClient } from '@/supabase/supabaseClient';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Provider } from '@supabase/supabase-js';
@@ -16,8 +17,12 @@ import { FcGoogle } from 'react-icons/fc'
 import { MdOutlineAutoAwesome } from 'react-icons/md';
 import { RxGithubLogo } from 'react-icons/rx'
 import { z } from 'zod'
+import { useTheme } from 'next-themes'
+
 
 const AuthCheck = () => {
+    const { theme } = useTheme();
+
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
@@ -88,7 +93,7 @@ const AuthCheck = () => {
 
                 <Typography text='We suggest using the email address that you use at work' variant='p' className='opacity-90 mb-7' />
 
-                <div className="flex flex-col space-y-4 text-white">
+                <div className={cn(` flex flex-col space-y-4 `, theme === 'dark' ? ' text-white' : ' text-black')}>
                     <Button disabled={isAuthenticated} variant='outline' className='py-6 border-2 flex space-x-3' onClick={() => socialAuth('google')}>
                         <FcGoogle size={30} />
                         <Typography text='Sign in with Google' variant='p' className='text-xl' />
