@@ -1,6 +1,8 @@
-import { getUserDataPages } from "@/actions/get-user-data-pages";
+"use server"
 import supabaseServerClientPages from "@/supabase/supabaseServerPages";
 import { NextApiRequest, NextApiResponse } from "next";
+
+
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== "POST") {
@@ -8,12 +10,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        const userData = await getUserDataPages(req, res);
+        const supabase = supabaseServerClientPages(req, res);
+
+        const { data: userData } = await supabase.auth.getUser();
+        const userID = userData.user?.id;
+        console.log("server", userData.user);
 
 
         if (!userData) {
             return res.status(401).json({ message: "Unauthorized" });
+
         }
+
+
 
         const { channelId, id } = req.query;
         if (!channelId || !id) {
@@ -26,16 +35,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return res.status(400).json({ message: "Bad request" });
         }
 
-        const supabase = supabaseServerClientPages(req, res);
 
-        const { data: channelData } = await supabase.from("channels").select('*').eq('id', channelId).contains('members', [userData.id]);
+        const { data: channelData } = await supabase.from("channels").select('*').eq('id', channelId).contains('members', [userID]);
 
         if (!channelData?.length) {
             return res.status(403).json({ message: 'Channel not found' });
         }
 
         const { data: creatingMessageData, error: creatingMessageError } = await supabase.from('messages').insert({
-            user_id: userData.id,
+            user_id: userID,
             workspace_id: id,
             channel_id: channelId,
             content: content,

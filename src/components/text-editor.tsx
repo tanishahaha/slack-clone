@@ -10,6 +10,7 @@ import PlaceHolder from '@tiptap/extension-placeholder';
 import MenuBar from './menu-bar'
 import axios from 'axios';
 import { Channels, Workspace } from '@/types/app'
+import { createClient } from '@/supabase/supabaseClient'
 
 type TextEditorProps = {
     apiUrl: string;
@@ -35,7 +36,9 @@ const TextEditor: FC<TextEditorProps> = ({ apiUrl, type, channel, workspaceData 
     });
 
     const handleSend = async () => {
-        // console.log(content)
+        const supabase = createClient();
+        console.log(supabase.auth.getUser())
+        console.log(content)
         if (content.length < 2) return;
 
         try {
@@ -70,7 +73,7 @@ const TextEditor: FC<TextEditorProps> = ({ apiUrl, type, channel, workspaceData 
                 <FiPlus size={28} className='dark:text-black' />
             </div>
 
-            <Button size={"sm"} className='absolute bottom-1 right-1' onClick={() => handleSend} disabled={content.length < 2}>
+            <Button size={"sm"} className='absolute bottom-1 right-1' onClick={() => handleSend()} disabled={content.length < 2}>
                 <Send />
             </Button>
 

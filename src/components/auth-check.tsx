@@ -28,7 +28,7 @@ const AuthCheck = () => {
         const getCurrentUser = async () => {
             const supabase = await createClient();
             const { data: { session } } = await supabase.auth.getSession();
-            // console.log(session);
+            console.log(session);
             if (session) {
                 return router.push('/');
             }

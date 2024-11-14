@@ -4,18 +4,25 @@ import { redirect } from "next/navigation";
 
 export default async function Home() {
 
-  const userData=await getUserData();
+  const userData = await getUserData();
 
-  if(!userData){
+  if (!userData) {
     return redirect('/auth');
   }
+  console.log(userData)
 
-  const userWorkspaceId=userData.workspaces?.[0];
+  const userWorkspaceId = userData.workspaces?.[0];
 
-  if(!userWorkspaceId){
+  if (!userWorkspaceId) {
     return redirect('/create-workspace');
   }
 
-  if(userWorkspaceId) return redirect(`/workspace/${userWorkspaceId}`);
+  if (userWorkspaceId) return redirect(`/workspace/${userWorkspaceId}`);
+
+  return (
+    <div>
+      hii
+    </div>
+  );
 
 }
