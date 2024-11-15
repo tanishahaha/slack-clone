@@ -34,7 +34,6 @@ const AuthCheck = () => {
             const supabase = await createClient();
             const { data: { session } } = await supabase.auth.getSession();
             console.log(session);
-            router.refresh();
             if (session) {
                 return router.push('/');
             }
@@ -94,7 +93,7 @@ const AuthCheck = () => {
 
                 <Typography text='We suggest using the email address that you use at work' variant='p' className='opacity-90 mb-7' />
 
-                <div className={cn(` flex flex-col space-y-4 `, theme === 'dark' ? ' text-white' : ' text-black')}>
+                <div className={cn(` flex flex-col space-y-4 text-white `, theme === 'dark' ? ' text-white' : ' text-black')}>
                     <Button disabled={isAuthenticated} variant='outline' className='py-6 border-2 flex space-x-3' onClick={() => socialAuth('google')}>
                         <FcGoogle size={30} />
                         <Typography text='Sign in with Google' variant='p' className='text-xl' />
