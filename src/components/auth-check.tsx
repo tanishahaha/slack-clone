@@ -34,6 +34,7 @@ const AuthCheck = () => {
             const supabase = await createClient();
             const { data: { session } } = await supabase.auth.getSession();
             console.log(session);
+            router.refresh();
             if (session) {
                 return router.push('/');
             }
