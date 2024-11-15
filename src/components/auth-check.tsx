@@ -93,13 +93,13 @@ const AuthCheck = () => {
 
                 <Typography text='We suggest using the email address that you use at work' variant='p' className='opacity-90 mb-7' />
 
-                <div className={cn(` flex flex-col space-y-4 text-white `, theme === 'dark' ? ' text-white' : ' text-black')}>
-                    <Button disabled={isAuthenticated} variant='outline' className='py-6 border-2 flex space-x-3' onClick={() => socialAuth('google')}>
+                <div className={cn(` flex flex-col space-y-4 text-black `, theme === 'dark' ? ' text-white' : ' text-black')}>
+                    <Button disabled={isAuthenticated} variant='outline' className=' bg-transparent py-6 border-2 flex space-x-3' onClick={() => socialAuth('google')}>
                         <FcGoogle size={30} />
                         <Typography text='Sign in with Google' variant='p' className='text-xl' />
                     </Button>
 
-                    <Button disabled={isAuthenticated} variant="outline" className='py-6 border-2 flex space-x-3' onClick={() => socialAuth('github')}>
+                    <Button disabled={isAuthenticated} variant="outline" className='bg-transparent py-6 border-2 flex space-x-3' onClick={() => socialAuth('github')}>
                         <RxGithubLogo size={30} />
                         <Typography text='Sign in with Github' variant='p' className='text-xl' />
                     </Button>
@@ -128,7 +128,7 @@ const AuthCheck = () => {
                             </Button>
 
                             <div className='px-5 py-4 bg-gray-100 rounded-sm'>
-                                <div className='text-gray-500 flex items-center space-x-3 '>
+                                <div className='text-gray-500 flex items-center tracking-normal space-x-3 '>
                                     <MdOutlineAutoAwesome />
                                     <Typography text='We will email you a magic link for a password free sign in' variant='p' />
                                 </div>
