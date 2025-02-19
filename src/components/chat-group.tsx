@@ -28,7 +28,7 @@ type ChatGroupProps = {
     slug: string;
 }
 
-const ChatGroup: FC<ChatGroupProps> = ({ type, socketUrl, apiUrl, headerTitle, chatId, socketQuery, paramKey, paramValue, userData, currentChannelData, currentWorkspaceData, userWorkspaceData, userWorkspaceChannels, slug }) => {
+const ChatGroup: FC<ChatGroupProps> = ({ type, socketUrl, apiUrl, headerTitle, chatId, socketQuery, paramKey, paramValue, userData, currentChannelData, currentWorkspaceData, userWorkspaceData, userWorkspaceChannels }) => {
 
     const [isVideoCall, setIsVideoCall] = useState<boolean>(false);
 

@@ -33,8 +33,8 @@ const ChatPage = async ({ params: { workspaceId, chatId } }: { params: { workspa
                 chatId={chatId}
                 socketUrl='/api/web-socket/direct-messages'
                 socketQuery={{
-                    channelId: currentChannelData?.id!,
-                    workspaceId: currentWorkspaceData.id,
+                    channelId: currentChannelData?.id ?? "",
+                    workspaceId: currentWorkspaceData?.id ?? "",
                     recipientId: chatId,
                 }}
                 apiUrl='/api/direct-messages'

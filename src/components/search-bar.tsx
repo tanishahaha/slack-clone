@@ -100,7 +100,7 @@ const SearchBar: FC<SearchBarProps> = ({ currentWorkspaceData, currentChannelDat
                                         <div className='flex gap-x-2'>
                                             {
                                                 loggedInUserId !== member.id && !isRegulator(member.id) && isChannelMember(member.id) && <Button className='text-[10px] ' size='sm' variant='destructive' onClick={
-                                                    () => makeUserRegulator(member.id, currentChannelData?.id!)
+                                                    () => currentChannelData?.id && makeUserRegulator(member.id, currentChannelData.id)
                                                 }>
                                                     Assign Regulator
                                                 </Button>
@@ -110,7 +110,7 @@ const SearchBar: FC<SearchBarProps> = ({ currentWorkspaceData, currentChannelDat
                                                 !isChannelMember(member.id) && (
 
                                                     <Button className='text-[10px]' size='sm' onClick={
-                                                        () => addUserToChannel(member.id, currentChannelData?.id!)
+                                                        () => currentChannelData?.id && addUserToChannel(member.id, currentChannelData.id)
                                                     }
                                                         disabled={isChannelMember(member.id)}
                                                     >

@@ -40,7 +40,7 @@ export async function GET(req: Request) {
 
 
     } catch (error) {
-        console.log("server error");
+        console.log("server error", error);
         return new Response("Internal server error", { status: 500 })
 
     }
