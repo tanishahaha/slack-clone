@@ -10,8 +10,9 @@ import React from 'react'
 import ChatHeader from '@/components/chat-header';
 import Typography from '@/components/ui/Typography';
 import TextEditor from '@/components/text-editor';
+import ChatGroup from '@/components/chat-group';
 
-const page = async ({ params: { id, channelId } }: { params: { id: string; channelId: string; } }) => {
+const page = async ({ params: { workspaceId, channelId } }: { params: { workspaceId: string; channelId: string; } }) => {
 
     // console.log(id);
 
@@ -22,7 +23,7 @@ const page = async ({ params: { id, channelId } }: { params: { id: string; chann
     }
     const [userWorkspaceData,] = await getUserWorkspaceData(userData.workspaces!);
 
-    const [currentWorkspaceData,] = await getCurrentWorkspaceData(id);
+    const [currentWorkspaceData,] = await getCurrentWorkspaceData(workspaceId);
 
     const userWorkspaceChannels = await getWorkspaceChannels(
         currentWorkspaceData.id,
@@ -38,21 +39,7 @@ const page = async ({ params: { id, channelId } }: { params: { id: string; chann
 
     return (
         <div className='hidden md:block '>
-            <div className='h-[calc(100vh-256px)]  overflow-y-auto [&::-webkit-scrollbar-thumb]:rounded-[6px] [&::-webkit-scrollbar-thumb]:bg-foreground/60 [&::-webkit-scrollbar-track]:bg-none [&::-webkit-scrollbar]:w-2 '>
-                <Sidebar userWrokspaceData={userWorkspaceData as UserWorkspace[]} currentWorkspaceData={currentWorkspaceData} userData={userData} />
-                <InfoSection userData={userData} currentWorkspaceData={currentWorkspaceData} workspaceChannels={userWorkspaceChannels} currentChannelId={channelId} />
-                <div className='p-4 relative w-full overflow-hidden'>
-                    <ChatHeader title={currentChannelData.name} />
-
-                    <div className='mt-10'>
-                        <Typography text='Chat Content' variant='h4' />
-                    </div>
-                </div>
-            </div>
-
-            <div className='m-4'>
-                <TextEditor apiUrl='/api/web-socket/messages' type='channel' channel={currentChannelData} workspaceData={currentWorkspaceData} />
-            </div>
+            <ChatGroup type='Channel' userData={userData} currentChannelData={currentChannelData} currentWorkspaceData={currentWorkspaceData} userWorkspaceChannels={userWorkspaceChannels} slug={workspaceId} chatId={channelId} socketUrl='/api/web-socket/messages' socketQuery={{ channelId: currentChannelData.id, workspaceId: currentWorkspaceData.id }} apiUrl='/api/messages' headerTitle={currentChannelData.name} paramKey='channelId' paramValue={channelId} userWorkspaceData={userWorkspaceData as UserWorkspace[]} />
 
         </div>
     )

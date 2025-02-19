@@ -12,6 +12,8 @@ import CreateWorkspace from './create-workspace';
 import { useRouter } from 'next/navigation';
 import ProgressBar from './progress-bar';
 import { cn } from '@/lib/utils';
+import { Copy } from 'lucide-react';
+import { toast } from 'sonner';
 
 type SidebarNavProps = {
     userWorkspaceData: Workspace[];
@@ -29,6 +31,14 @@ const SidebarNav: FC<SidebarNavProps> = ({ currentWorkspaceData, userWorkspaceDa
         setSwitchingWorkspace(true);
         router.push(`/workspace/${id}`);
         setSwitchingWorkspace(false);
+    }
+
+    const copyInviteLink = (inviteCode: string) => {
+        const currentDomain = window.location.origin;
+
+        navigator.clipboard.writeText(`${currentDomain}/create-workspace/${inviteCode}`);
+
+        toast.success("Invite Link Copied to clipboard");
     }
 
     return (
@@ -60,7 +70,7 @@ const SidebarNav: FC<SidebarNavProps> = ({ currentWorkspaceData, userWorkspaceDa
                                                 userWorkspaceData.map((workspace) => {
                                                     const isActive = currentWorkspaceData.id === workspace.id;
                                                     return (
-                                                        <div key={workspace.id} className={cn(isActive && `bg-blue-700 text-white`, ' px-2 py-1 flex gap-2 cursor-pointer')} onClick={() => switchWorkspace(workspace.id)}>
+                                                        <div key={workspace.id} className={cn(isActive && `bg-blue-700 text-white`, ' px-2 py-1 flex gap-2 cursor-pointer')} onClick={() => !isActive && switchWorkspace(workspace.id)}>
                                                             <Avatar>
                                                                 <AvatarImage src={workspace.image_url || ''} alt={workspace.name} className='object-cover w-full h-full' />
                                                                 <AvatarFallback className='bg-slate-700 text-white'>
@@ -70,7 +80,13 @@ const SidebarNav: FC<SidebarNavProps> = ({ currentWorkspaceData, userWorkspaceDa
 
                                                             <div>
                                                                 <Typography variant='p' text={workspace.name} className='text-small' />
-                                                                <Typography variant='p' text={workspace.invite_code || ''} className='text-xs lg:text-xs' />
+
+                                                                <div className='flex items-center gap-x-2'>
+
+                                                                    <Typography variant='p' text='Copy Invite Link' className='text-xs lg:text-xs' />
+                                                                    <Copy onClick={() => copyInviteLink(workspace.invite_code!)} size={18} />
+                                                                </div>
+
                                                             </div>
                                                         </div>
 

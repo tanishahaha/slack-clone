@@ -50,7 +50,7 @@ export const createChannel = async ({
 
 }
 
-const updateChannelMembers = async (channelId: string, userId: string) => {
+export const updateChannelMembers = async (channelId: string, userId: string) => {
 
     const supabase = createClient();
     const { data: updateChannelData, error: updateChannelError } = await supabase.rpc('update_channel_members', {
@@ -61,7 +61,7 @@ const updateChannelMembers = async (channelId: string, userId: string) => {
     return [updateChannelData, updateChannelError];
 }
 
-const addChannelToUser = async (channelId: string, userId: string) => {
+export const addChannelToUser = async (channelId: string, userId: string) => {
     const supabase = createClient();
 
     const { data: userChannelData, error: userChannelError } = await supabase.rpc('update_user_channels', {
@@ -80,4 +80,15 @@ const addChannelToWorkspace = async (workspaceId: string, channelId: string) => 
     });
 
     return [workspaceChannelData, workspaceChannelError];
+}
+
+export const updateChannelRegulators = async (userId: string, channelId: string) => {
+    const supabase = await createClient();
+
+    const { data: updateChannelData, error: updateChannelError } = await supabase.rpc('update_channel_regulators', {
+        new_regulator: userId,
+        channel_id: channelId,
+    })
+
+    return [updateChannelData, updateChannelError];
 }

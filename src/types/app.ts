@@ -1,3 +1,7 @@
+import { Server as NetServer, Socket } from "net";
+import { NextApiResponse } from "next";
+import { Server as SocketIOServer } from "socket.io"
+
 export type User = {
     avatar_url: string
     channels: string[] | null
@@ -17,7 +21,7 @@ export type Workspace = {
     id: string
     image_url: string | null
     invite_code: string | null
-    members: string[] | null
+    members: User[] | null
     name: string
     regulators: string[] | null
     slug: string
@@ -44,3 +48,13 @@ export type Messages = {
     user_id: string
     workspace_id: string | null
 }
+
+export type SocketIoApiResponse = NextApiResponse & {
+    socket: Socket & {
+        server: NetServer & {
+            io: SocketIOServer
+        }
+    }
+}
+
+export type MessageWithUser = Messages & { user: User }

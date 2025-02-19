@@ -1,10 +1,11 @@
 "use server"
 import supabaseServerClientPages from "@/supabase/supabaseServerPages";
-import { NextApiRequest, NextApiResponse } from "next";
+import { SocketIoApiResponse } from "@/types/app";
+import { NextApiRequest } from "next";
 
 
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: SocketIoApiResponse) {
     if (req.method !== "POST") {
         return res.status(405).json({ message: "Method Not allowed" });
     }
@@ -14,7 +15,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const { data: userData } = await supabase.auth.getUser();
         const userID = userData.user?.id;
-        console.log("server", userData.user);
 
 
         if (!userData) {
@@ -24,8 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 
 
-        const { channelId, id } = req.query;
-        if (!channelId || !id) {
+        const { channelId, workspaceId } = req.query;
+        if (!channelId || !workspaceId) {
             return res.status(400).json({ message: 'Bad Request' })
         }
 
@@ -44,17 +44,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const { data: creatingMessageData, error: creatingMessageError } = await supabase.from('messages').insert({
             user_id: userID,
-            workspace_id: id,
+            workspace_id: workspaceId,
             channel_id: channelId,
             content: content,
             file_url: fileUrl,
-        }).select("*,user:user_id(*)").single();
+        }).select("*,user:user_id(*)").order('created_at', { ascending: true }).single();
 
         if (creatingMessageError) {
             console.log("message creation error");
             return res.status(500).json({ message: "internal server error" });
         }
-        console.log(creatingMessageData)
+        // console.log(creatingMessageData)
+
+        res?.socket?.server?.io?.emit(`channel:${channelId}:channel-messages`, creatingMessageData)
+
+
 
         return res.status(201).json({ message: "Message created successfully" });
 

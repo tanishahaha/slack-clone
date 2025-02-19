@@ -17,11 +17,10 @@ import { UsecolorPreferences } from '@/provider/color-preferences';
 import PreferencesDialog from './preferences-dialog';
 
 type SidenavbarBottomProps = {
-    userWorkspaceData: Workspace[],
     currentWorkspaceData: Workspace,
     userData: User
 }
-const SidenavbarBottom: FC<SidenavbarBottomProps> = ({ userWorkspaceData, currentWorkspaceData, userData }) => {
+const SidenavbarBottom: FC<SidenavbarBottomProps> = ({ currentWorkspaceData, userData }) => {
 
     let backgroundColor = 'bg-primary-dark';
     const { color } = UsecolorPreferences();
@@ -30,7 +29,7 @@ const SidenavbarBottom: FC<SidenavbarBottomProps> = ({ userWorkspaceData, curren
     } else if (color === 'blue') {
         backgroundColor = 'bg-[#023047]';
     }
-    console.log(userWorkspaceData)
+    // console.log(userWorkspaceData)
 
     return (
         <div className='flex flex-col space-y-3'>

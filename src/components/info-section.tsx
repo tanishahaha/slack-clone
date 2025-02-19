@@ -9,7 +9,7 @@ import CreateChannelDialog from './create-channel-dialog';
 import { Channels, User, Workspace } from '@/types/app';
 import { useRouter } from 'next/navigation';
 
-const InfoSection: FC<{ userData: User; currentWorkspaceData: Workspace; workspaceChannels: Channels[]; currentChannelId: string }> = ({ userData, currentWorkspaceData, workspaceChannels, currentChannelId }) => {
+const InfoSection: FC<{ userData: User; currentWorkspaceData: Workspace; workspaceChannels: Channels[]; currentChannelId: string | undefined }> = ({ userData, currentWorkspaceData, workspaceChannels, currentChannelId }) => {
 
   const { color } = UsecolorPreferences();
 
@@ -40,6 +40,11 @@ const InfoSection: FC<{ userData: User; currentWorkspaceData: Workspace; workspa
   const navigateToChannel = (channelId: string) => {
     const url = `/workspace/${currentWorkspaceData.id}/channels/${channelId}`;
     router.push(url);
+  }
+
+  const navigateToMessage=(memberId:string)=>{
+    const url=`/workspace/${currentWorkspaceData.id}/direct-message/${memberId}`;
+    router.push(url)
   }
 
 
@@ -96,9 +101,15 @@ const InfoSection: FC<{ userData: User; currentWorkspaceData: Workspace; workspa
             </div>
 
             <CollapsibleContent>
-              <Typography variant='p' text='👉 User 1' className={cn(`px-2 py-1 rounded-sm cursor-pointer hover:bg-white`, hoverCol)} />
-              <Typography variant='p' text='👉 User 2' className={cn(`px-2 py-1 rounded-sm cursor-pointer hover:bg-white`, hoverCol)} />
-              <Typography variant='p' text='👉 User 3' className={cn(`px-2 py-1 rounded-sm cursor-pointer hover:bg-white`, hoverCol)} />
+              {
+                currentWorkspaceData.members?.map((member) => {
+                  return (
+
+                    <Typography key={member.id} variant='p' text={`👉 ${member.name || member.email}`} className={cn(`px-2 py-1 rounded-sm cursor-pointer hover:bg-white`, hoverCol)} onClick={()=>navigateToMessage(member.id)} />
+                  )
+                })
+              }
+
             </CollapsibleContent>
 
           </Collapsible>

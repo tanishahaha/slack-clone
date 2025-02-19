@@ -9,7 +9,7 @@ import { Workspace as UserWorkspace } from '@/types/app';
 import { redirect } from 'next/navigation';
 import React from 'react'
 
-const page = async ({ params: { id } }: { params: { id: string } }) => {
+const page = async ({ params: { workspaceId } }: { params: { workspaceId: string } }) => {
 
   // console.log(id);
 
@@ -20,7 +20,7 @@ const page = async ({ params: { id } }: { params: { id: string } }) => {
   }
   const [userWorkspaceData,] = await getUserWorkspaceData(userData.workspaces!);
 
-  const [currentWorkspaceData,] = await getCurrentWorkspaceData(id);
+  const [currentWorkspaceData,] = await getCurrentWorkspaceData(workspaceId);
 
   const userWorkspaceChannels = await getWorkspaceChannels(
     currentWorkspaceData.id,
@@ -29,11 +29,11 @@ const page = async ({ params: { id } }: { params: { id: string } }) => {
 
   // console.log(userWorkspaceChannels)
 
-  if (userWorkspaceChannels.length) {
-    redirect(
-      `/workspace/${id}/channels/${userWorkspaceChannels[0].id}`
-    )
-  }
+  // if (userWorkspaceChannels.length) {
+  //   redirect(
+  //     `/workspace/${workspaceId}/channels/${userWorkspaceChannels[0].id}`
+  //   )
+  // }
 
   return (
     <>
