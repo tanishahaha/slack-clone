@@ -1,17 +1,16 @@
-import React from 'react'
-import { Card, CardContent } from './ui/card'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 import { z } from "zod";
 import { v4 as uuid } from "uuid"
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FC, useState } from "react"
 import { toast } from 'sonner';
-import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { Channels, User, Workspace } from '@/types/app';
 import { File } from 'lucide-react';
-import Typography from './ui/Typography';
+import Typography from '@/components/ui/Typography';
 import { createClient } from '@/supabase/supabaseClient';
 
 type ChatFilesProps = {
@@ -70,7 +69,7 @@ const ChatFileUpload: FC<ChatFilesProps> = ({ channel, workspaceData, userData, 
 
 
         if (recipientId) {
-            const { data: directmessageData, error: directmessageError } = await supabase.from("direct_messages").insert({
+            const { error: directmessageError } = await supabase.from("direct_messages").insert({
                 file_url: data.path,
                 user: userData.id,
                 user_one: userData.id,
@@ -85,7 +84,7 @@ const ChatFileUpload: FC<ChatFilesProps> = ({ channel, workspaceData, userData, 
 
 
         } else {
-            const { data: messageData, error: messageError } = await supabase.from("messages").insert({
+            const { error: messageError } = await supabase.from("messages").insert({
                 file_url: data.path,
                 user_id: userData.id,
                 workspace_id: workspaceData.id,

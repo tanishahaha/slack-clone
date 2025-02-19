@@ -12,7 +12,7 @@ function getPagination(page: number, size: number) {
 
 export async function GET(req: Request) {
     try {
-        const supabase = await createClient();
+        const supabase = createClient();
         const userData = await getUserData();
         const { searchParams } = new URL(req.url);
         const channelId = searchParams.get('channelId');

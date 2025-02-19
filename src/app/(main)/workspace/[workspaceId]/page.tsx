@@ -7,7 +7,6 @@ import NoDataScreen from '@/components/no-data-channel';
 import Sidebar from '@/components/sidebar';
 import { Workspace as UserWorkspace } from '@/types/app';
 import { redirect } from 'next/navigation';
-import React from 'react'
 
 const page = async ({ params: { workspaceId } }: { params: { workspaceId: string } }) => {
 
@@ -27,13 +26,6 @@ const page = async ({ params: { workspaceId } }: { params: { workspaceId: string
     userData.id
   )
 
-  // console.log(userWorkspaceChannels)
-
-  // if (userWorkspaceChannels.length) {
-  //   redirect(
-  //     `/workspace/${workspaceId}/channels/${userWorkspaceChannels[0].id}`
-  //   )
-  // }
 
   return (
     <>

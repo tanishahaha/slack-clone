@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import Typography from '@/components/ui/Typography'
 import { useCreateWorkspaceValues } from '@/hooks/create-workspace-values';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import slugify from "slugify";
 import { toast } from 'sonner';
 import { v4 as uuid } from "uuid";

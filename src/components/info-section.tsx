@@ -1,11 +1,11 @@
 "use client"
 import { cn } from '@/lib/utils';
 import { UsecolorPreferences } from '@/provider/color-preferences'
-import React, { FC, useState } from 'react'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
+import { FC, useState } from 'react'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { FaCaretDown, FaCaretRight, FaPlus } from 'react-icons/fa';
-import Typography from './ui/Typography';
-import CreateChannelDialog from './create-channel-dialog';
+import Typography from '@/components/ui/Typography';
+import CreateChannelDialog from '@/components/create-channel-dialog';
 import { Channels, User, Workspace } from '@/types/app';
 import { useRouter } from 'next/navigation';
 
@@ -42,8 +42,8 @@ const InfoSection: FC<{ userData: User; currentWorkspaceData: Workspace; workspa
     router.push(url);
   }
 
-  const navigateToMessage=(memberId:string)=>{
-    const url=`/workspace/${currentWorkspaceData.id}/direct-message/${memberId}`;
+  const navigateToMessage = (memberId: string) => {
+    const url = `/workspace/${currentWorkspaceData.id}/direct-message/${memberId}`;
     router.push(url)
   }
 
@@ -105,7 +105,7 @@ const InfoSection: FC<{ userData: User; currentWorkspaceData: Workspace; workspa
                 currentWorkspaceData.members?.map((member) => {
                   return (
 
-                    <Typography key={member.id} variant='p' text={`👉 ${member.name || member.email}`} className={cn(`px-2 py-1 rounded-sm cursor-pointer hover:bg-white`, hoverCol)} onClick={()=>navigateToMessage(member.id)} />
+                    <Typography key={member.id} variant='p' text={`👉 ${member.name || member.email}`} className={cn(`px-2 py-1 rounded-sm cursor-pointer hover:bg-white`, hoverCol)} onClick={() => navigateToMessage(member.id)} />
                   )
                 })
               }

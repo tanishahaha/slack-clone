@@ -4,7 +4,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export const getUserDataPages = async (req: NextApiRequest, res: NextApiResponse): Promise<User | null> => {
     const supabase = supabaseServerClientPages(req, res);
-    // const supabase=createClient()
 
     const { data: { user }, } = await supabase.auth.getUser();
     console.log(user);

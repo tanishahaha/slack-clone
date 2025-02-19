@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { Button } from './ui/button';
+import { useState } from 'react'
+import { Button } from '@/components/ui/button';
 import { FaPlus } from 'react-icons/fa';
-import Typography from './ui/Typography';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './ui/form';
+import Typography from '@/components/ui/Typography';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Input } from './ui/input';
-import ImageUpload from './image-upload';
+import { Input } from '@/components/ui/input';
+import ImageUpload from '@/components/image-upload';
 import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
 import { createWorkspace } from '@/actions/create-workspace';
@@ -19,8 +19,8 @@ import { useCreateWorkspaceValues } from '@/hooks/create-workspace-values';
 const CreateWorkspace = () => {
     const router = useRouter();
     const { imageUrl, updateImageUrl } = useCreateWorkspaceValues();
-    const  [isDialogOpen, setIsDialogOpen  ]= useState(false);
-    const [isSubmitting, setIsSubmitting] =useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
 
     const formSchema = z.object({
@@ -45,7 +45,7 @@ const CreateWorkspace = () => {
         if (res?.error) {
             console.error(res.error);
         }
-        
+
         router.refresh();
         form.reset();
         updateImageUrl('');
@@ -55,7 +55,7 @@ const CreateWorkspace = () => {
     }
 
     return (
-        <Dialog open={isDialogOpen} onOpenChange={()=>setIsDialogOpen(prev=>!prev)}>
+        <Dialog open={isDialogOpen} onOpenChange={() => setIsDialogOpen(prev => !prev)}>
             <DialogTrigger>
                 <div className='flex items-center gap-2 p-2 cursor-pointer hover:opacity-80 border-none'>
                     <Button variant="secondary">

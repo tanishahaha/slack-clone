@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import React, { HTMLAttributes } from 'react'
+import { HTMLAttributes } from 'react'
 import { FC } from 'react'
 
 type TypographyProps = {

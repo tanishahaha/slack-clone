@@ -1,12 +1,11 @@
 "use client"
 import { UsecolorPreferences } from '@/provider/color-preferences';
 import { useTheme } from 'next-themes'
-import React from 'react'
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from './ui/dialog';
-import Typography from './ui/Typography';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import Typography from '@/components/ui/Typography';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { HiOutlinePaintBrush } from "react-icons/hi2"
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MdLightMode } from 'react-icons/md';
 import { BsLaptop } from 'react-icons/bs';

@@ -1,9 +1,9 @@
 "use server"
 
 import { createClient } from "@/supabase/supabaseServer";
-import { getUserData } from "./get-user-data";
-import { updatUserWorkspace } from "./update-user-workspace";
-import { addMemberToWorkspace } from "./add-member-to-workspace";
+import { getUserData } from "@/actions/get-user-data";
+import { updatUserWorkspace } from "@/actions/update-user-workspace";
+import { addMemberToWorkspace } from "@/actions/add-member-to-workspace";
 
 export const createWorkspace = async ({ imageUrl, name, slug, invite_code }: { imageUrl?: string; name: string; slug: string; invite_code: string; }) => {
     const supabase = createClient();

@@ -1,9 +1,9 @@
 "use server";
 
 import { createClient } from "@/supabase/supabaseServer";
-import { getUserData } from "./get-user-data";
-import { addMemberToWorkspace } from "./add-member-to-workspace";
-import { updatUserWorkspace } from "./update-user-workspace";
+import { getUserData } from "@/actions/get-user-data";
+import { addMemberToWorkspace } from "@/actions/add-member-to-workspace";
+import { updatUserWorkspace } from "@/actions/update-user-workspace";
 
 export const workspaceInvite = async (inviteCode: string) => {
     const supabase = createClient();

@@ -1,20 +1,20 @@
 import { Channels, User } from '@/types/app';
-import React, { FC, useEffect, useState } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import Typography from './ui/Typography';
+import { FC, useEffect, useState } from 'react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Typography from '@/components/ui/Typography';
 import { MdOutlineAdminPanelSettings, MdOutlineAssistantPhoto } from 'react-icons/md';
 import { useChatFile } from '@/hooks/use-chat-files';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Form, FormControl, FormField, FormItem } from './ui/form';
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { Edit, Trash } from 'lucide-react';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import axios from 'axios';
 
 type ChatItemProps = {

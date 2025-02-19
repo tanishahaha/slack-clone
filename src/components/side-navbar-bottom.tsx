@@ -1,20 +1,20 @@
 "use client"
 import { User, Workspace } from '@/types/app'
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { FiPlus } from 'react-icons/fi';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { GoDot, GoDotFill } from 'react-icons/go'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import Typography from './ui/Typography';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Typography from '@/components/ui/Typography';
 import { GiNightSleep } from "react-icons/gi"
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { BsPencil } from 'react-icons/bs';
 import { IoDiamondOutline } from 'react-icons/io5';
 import { UsecolorPreferences } from '@/provider/color-preferences';
-import PreferencesDialog from './preferences-dialog';
+import PreferencesDialog from '@/components/preferences-dialog';
 
 type SidenavbarBottomProps = {
     currentWorkspaceData: Workspace,

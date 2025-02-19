@@ -1,16 +1,16 @@
 import { Workspace } from '@/types/app'
-import React, { FC, useState } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import Typography from './ui/Typography';
-import { Card, CardContent } from './ui/card';
-import { Separator } from './ui/separator';
+import { FC, useState } from 'react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Typography from '@/components/ui/Typography';
+import { Card, CardContent } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 import { RiHome2Fill } from 'react-icons/ri';
 import { PiChatsTeardrop } from 'react-icons/pi'
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
-import CreateWorkspace from './create-workspace';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import CreateWorkspace from '@/components/create-workspace';
 import { useRouter } from 'next/navigation';
-import ProgressBar from './progress-bar';
+import ProgressBar from '@/components/progress-bar';
 import { cn } from '@/lib/utils';
 import { Copy } from 'lucide-react';
 import { toast } from 'sonner';

@@ -1,7 +1,6 @@
 import { useCreateWorkspaceValues } from '@/hooks/create-workspace-values'
 import { UploadDropzone } from '@/utils/uploadthing';
 import Image from 'next/image';
-import React from 'react'
 import { MdCancel } from 'react-icons/md';
 
 const ImageUpload = () => {

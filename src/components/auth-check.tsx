@@ -10,7 +10,7 @@ import { createClient } from '@/supabase/supabaseClient';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Provider } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { BsSlack } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
@@ -58,12 +58,11 @@ const AuthCheck = () => {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsAuthenticated(true);
         const response = await registerWithEmail(values)
-        const { data, error } = JSON.parse(response);
+        const { error } = JSON.parse(response);
         if (error) {
             console.log("sign", error);
             return;
         }
-        // console.log(data)
         setIsAuthenticated(false);
 
     }

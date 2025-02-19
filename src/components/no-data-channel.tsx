@@ -1,9 +1,9 @@
 "use client";
 
-import React, { FC, useState } from 'react'
-import Typography from './ui/Typography';
-import { Button } from './ui/button';
-import CreateChannelDialog from './create-channel-dialog';
+import { FC, useState } from 'react'
+import Typography from '@/components/ui/Typography';
+import { Button } from '@/components/ui/button';
+import CreateChannelDialog from '@/components/create-channel-dialog';
 import { UsecolorPreferences } from '@/provider/color-preferences';
 import { cn } from '@/lib/utils';
 

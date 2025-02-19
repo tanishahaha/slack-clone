@@ -1,7 +1,7 @@
 'use server';
 
 import { createClient } from "@/supabase/supabaseServer";
-import { getUserData } from "./get-user-data";
+import { getUserData } from "@/actions/get-user-data";
 
 export const createChannel = async ({
     name, workspaceId, userId
@@ -83,7 +83,7 @@ const addChannelToWorkspace = async (workspaceId: string, channelId: string) => 
 }
 
 export const updateChannelRegulators = async (userId: string, channelId: string) => {
-    const supabase = await createClient();
+    const supabase = createClient();
 
     const { data: updateChannelData, error: updateChannelError } = await supabase.rpc('update_channel_regulators', {
         new_regulator: userId,

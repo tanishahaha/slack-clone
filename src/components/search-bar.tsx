@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Channels, Workspace } from '@/types/app'
 import { UsecolorPreferences } from '@/provider/color-preferences';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { Search } from 'lucide-react';
-import { ScrollArea } from './ui/scroll-area';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { MdOutlineAdminPanelSettings, MdOutlineAssistantPhoto } from 'react-icons/md';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { addChannelToUser, updateChannelMembers, updateChannelRegulators } from '@/actions/create-channel';
 

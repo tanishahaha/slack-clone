@@ -1,11 +1,11 @@
 "use client"
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Editor } from '@tiptap/react'
 import { Bold, Code, Italic, List, ListOrdered, SquareCode, Strikethrough } from 'lucide-react'
-import Typography from './ui/Typography'
+import Typography from '@/components/ui/Typography'
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react'
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 interface EmojiIn {
     native: string;

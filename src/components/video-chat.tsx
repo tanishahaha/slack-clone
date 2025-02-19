@@ -1,7 +1,7 @@
 'use client';
 import { User } from '@/types/app';
-import React, { FC, useEffect, useState } from 'react'
-import DotAnimatedLoader from './dot-animated-loader';
+import { FC, useEffect, useState } from 'react'
+import DotAnimatedLoader from '@/components/dot-animated-loader';
 import "@livekit/components-styles";
 import {
     ControlBar,

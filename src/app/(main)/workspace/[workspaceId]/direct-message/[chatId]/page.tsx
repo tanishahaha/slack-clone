@@ -17,9 +17,6 @@ const ChatPage = async ({ params: { workspaceId, chatId } }: { params: { workspa
     const userWorkspaceChannels = await getWorkspaceChannels(workspaceId, userData.id);
 
     const currentChannelData = userWorkspaceChannels.find(channel => channel.id === chatId);
-    // if (!currentChannelData) {
-    //     redirect('/')
-    // }
 
 
     return (

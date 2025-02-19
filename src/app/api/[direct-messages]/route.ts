@@ -12,7 +12,7 @@ function getPagination(page: number, size: number) {
 
 export async function GET(req: Request) {
     try {
-        const supabase = await createClient();
+        const supabase = createClient();
         const userData = await getUserData();
 
         if (!userData) return new NextResponse('unauthorized', { status: 401 });

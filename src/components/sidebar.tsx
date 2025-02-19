@@ -1,8 +1,8 @@
 "use client"
 import { User, Workspace } from '@/types/app'
-import React, { FC } from 'react'
-import SidebarNav from './sidebar-nav';
-import SidenavbarBottom from './side-navbar-bottom';
+import { FC } from 'react'
+import SidebarNav from '@/components/sidebar-nav';
+import SidenavbarBottom from '@/components/side-navbar-bottom';
 
 
 type SidebarProps = {

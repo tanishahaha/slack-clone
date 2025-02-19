@@ -1,17 +1,17 @@
 "use client"
 
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import { FiPlus } from 'react-icons/fi'
-import { Button } from './ui/button'
+import { Button } from '@/components/ui/button'
 import { Send } from 'lucide-react'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit';
 import PlaceHolder from '@tiptap/extension-placeholder';
-import MenuBar from './menu-bar'
+import MenuBar from '@/components/menu-bar'
 import axios from 'axios';
 import { Channels, User, Workspace } from '@/types/app'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog'
-import ChatFileUpload from './chat-file-upload'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import ChatFileUpload from '@/components/chat-file-upload'
 
 type TextEditorProps = {
     apiUrl: string;

@@ -2,15 +2,14 @@
 
 import { Channels, User, Workspace } from "@/types/app";
 import { FC, useEffect, useState } from "react";
-import Sidebar from "./sidebar";
-import InfoSection from "./info-section";
-import ChatHeader from "./chat-header";
-import Typography from "./ui/Typography";
-import TextEditor from "./text-editor";
-import ChatMessages from "./chat-messages";
-import SearchBar from "./search-bar";
+import Sidebar from "@/components/sidebar";
+import InfoSection from "@/components/info-section";
+import ChatHeader from "@/components/chat-header";
+import TextEditor from "@/components/text-editor";
+import ChatMessages from "@/components/chat-messages";
+import SearchBar from "@/components/search-bar";
 import { useSearchParams } from "next/navigation";
-import VideoChat from "./video-chat";
+import VideoChat from "@/components/video-chat";
 
 type ChatGroupProps = {
     type: 'Channel' | 'DirectMessage';

@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 type IntroBannerProps = {
     type: 'Channel' | 'DirectMessage';

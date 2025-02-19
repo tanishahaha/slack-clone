@@ -2,7 +2,7 @@
 import { cn } from '@/lib/utils';
 import { UsecolorPreferences } from '@/provider/color-preferences';
 import { useTheme } from 'next-themes'
-import React, { FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 const MainContent: FC<{ children: ReactNode }> = ({ children }) => {
 

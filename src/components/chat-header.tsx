@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import Typography from './ui/Typography';
 import { IoMdHeadset } from 'react-icons/io'
 import { User } from '@/types/app';
@@ -10,7 +10,7 @@ type ChatHeaderProps = {
     userData: User;
 }
 
-const ChatHeader: FC<ChatHeaderProps> = ({ title, chatId, userData }) => {
+const ChatHeader: FC<ChatHeaderProps> = ({ title }) => {
 
 
     const router = useRouter();

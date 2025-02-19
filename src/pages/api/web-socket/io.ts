@@ -1,5 +1,4 @@
 import { SocketIoApiResponse } from "@/types/app";
-import { NextApiRequest, NextApiResponse } from "next";
 import { Server as NetServer } from "http";
 import { Server as SocketServer } from "socket.io"
 
@@ -11,7 +10,7 @@ const initializeSocketServer = (httpServer: NetServer): SocketServer => {
         addTrailingSlash: false,
     })
 }
-const handler = async (req: NextApiRequest, res: SocketIoApiResponse) => {
+const handler = async (res: SocketIoApiResponse) => {
     if (!res.socket.server.io) {
         res.socket.server.io = initializeSocketServer(
             res.socket.server.io as unknown as NetServer
